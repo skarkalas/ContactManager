@@ -6,10 +6,7 @@ import java.util.Set;
 
 public class FutureMeetingImpl extends MeetingImpl implements FutureMeeting, Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1672847911689486045L;
 
 	/**
 	 * A meeting to be held in the future

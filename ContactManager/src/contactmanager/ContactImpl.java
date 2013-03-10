@@ -9,17 +9,15 @@ import java.io.Serializable;
 */
 
 public class ContactImpl implements Contact, Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final int STARTING_ID = 10000;
+	private static final long serialVersionUID = -2539614867749641482L;
 	private static int uniqueId;
 	private int id;
 	private String name;
 	private String notes;
 	
 	static{
-		uniqueId = 10000;
+		uniqueId = STARTING_ID;
 	}
 
 	public ContactImpl(String name) {
@@ -63,7 +61,7 @@ public class ContactImpl implements Contact, Serializable {
 	* @return a string with notes about the contact, maybe empty. 
 	*/
 	@Override
-	public String getNotes (){
+	public String getNotes () {
 		return notes;
 	}
 	
@@ -77,5 +75,22 @@ public class ContactImpl implements Contact, Serializable {
 		notes+=note;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		boolean result;
+		if (obj instanceof ContactImpl) {
+			ContactImpl other = (ContactImpl) obj; 
+			result = this.getId() == other.getId();
+		}
+		else {
+			result  = false;
+		}
+		return result;
+	}
+	
+	@Override
+	public int hashCode() {
+		return id;
+	}
 }  
 

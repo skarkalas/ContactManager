@@ -12,18 +12,15 @@ import java.util.Set;
  */
 
 public class MeetingImpl implements Meeting, Serializable, Comparable<Meeting>  {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 3218056569802584430L;
+	private static final int STARTING_ID = 10000;
 	private static int uniqueId;
 	private int id;
 	private Calendar date;
 	private Set<Contact> contacts;
 
 	static{
-		uniqueId=10000;
+		uniqueId=STARTING_ID;
 	}
 	
 	public MeetingImpl(Calendar date, Set<Contact> contacts) {
@@ -75,15 +72,6 @@ public class MeetingImpl implements Meeting, Serializable, Comparable<Meeting>  
 
 	@Override
 	public int compareTo(Meeting m) {
-//		if ((this.getDate()).before(m.getDate())){
-//		return -1;
-//		} else {
-//			if ((this.getDate()).equals(m.getDate())){
-//				return 0;
-//			} else {
-//				return 1;
-//			}
-//		}
 		return this.getDate().compareTo(m.getDate());
 	}
 }
