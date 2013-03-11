@@ -19,11 +19,6 @@ public class ContactImpl implements Contact, Serializable {
 	static{
 		uniqueId = STARTING_ID;
 	}
-
-	public ContactImpl(String name) {
-		this.id = uniqueId++;
-		this.name = name;
-	}
 	
 	public ContactImpl(String name, String notes) {
 		this.id = uniqueId++;

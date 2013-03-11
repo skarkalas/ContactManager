@@ -20,17 +20,15 @@ public class MeetingImplTest {
 	private MeetingImpl meeting;
 	private Calendar cal;
 	private int meetingId;
-	private String meetingDate;
 	private Set<Contact> contactSet;
 	
 
 	@Before
 	public void beforeTest() {
-		newContact = new ContactImpl("nancy");
+		newContact = new ContactImpl("nancy", "notes");
 		meeting = new MeetingImpl (cal, contactSet);
 		meetingId = meeting.getId();
 		cal = meeting.getDate();
-		meetingDate = meeting.getMeetingDate(cal);
 		contactSet = new HashSet<Contact>();
 		contactSet.add(newContact);
 	}
@@ -39,8 +37,8 @@ public class MeetingImplTest {
 	public void test() {
 		
 		assertEquals (meeting.getId(), meetingId);
-		assertEquals (meeting.getMeetingDate(cal), meetingDate);
 		assertTrue("true", newContact instanceof Contact);
+		assertEquals (meeting.getDate(), cal);
 
 		// test if contacts was added correctly
 		for (Contact c : contactSet) {
@@ -53,7 +51,6 @@ public class MeetingImplTest {
 		meeting = null;
 		newContact = null;
 		cal=null;
-		meetingDate=null;
 		contactSet=null;
 	}
 }

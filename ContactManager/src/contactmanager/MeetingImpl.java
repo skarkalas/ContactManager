@@ -1,9 +1,7 @@
 package contactmanager;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Set;
 
 /**
@@ -52,11 +50,6 @@ public class MeetingImpl implements Meeting, Serializable, Comparable<Meeting>  
 		date = Calendar.getInstance();
 		return date;
 	}
-	
-	public String getMeetingDate(Calendar cal){
-		Date date = cal.getTime();
-		return new SimpleDateFormat("yyyy-MM-dd").format(date);
-	}
 
 	/**
 	 * Return the details of people that attended the meeting. The list contains
@@ -73,6 +66,23 @@ public class MeetingImpl implements Meeting, Serializable, Comparable<Meeting>  
 	@Override
 	public int compareTo(Meeting m) {
 		return this.getDate().compareTo(m.getDate());
+	}
+	@Override
+	public boolean equals(Object obj) {
+		boolean result;
+		if (obj instanceof MeetingImpl) {
+			MeetingImpl other = (MeetingImpl) obj; 
+			result = this.getId() == other.getId();
+		}
+		else {
+			result  = false;
+		}
+		return result;
+	}
+	
+	@Override
+	public int hashCode() {
+		return id;
 	}
 }
 
